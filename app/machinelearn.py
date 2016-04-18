@@ -1,14 +1,22 @@
+# found and modified this face identifying algorithm and I think it should work
+# havent been able to figure out how to import training set to sklearn 
+
+
 from time import time
 import logging
 import matplotlib.pyplot as plt
 
 from sklearn.cross_validation import train_test_split
-from dropbox import fetch_plates_labeled
+from dropbox import fetch_plates_labeled ####still need to work out how to import 
+##images and labels 
+
 from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.decomposition import RandomizedPCA
 from sklearn.svm import SVC
+##svc uses a one vs. one scheme we can use linearsvc which uses 
+#one vs. rest scheme
 
 print(__doc__)
 
@@ -33,12 +41,14 @@ print("n_classes: %d" % n_classes)
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.25, random_state=42)
+#test size is one quarter of population
 
 print("Extracting the top %d eigenfaces from %d plates"
       % (n_components, X_train.shape[0]))
 t0 = time()
 pca = RandomizedPCA(n_components=n_components, whiten=True).fit(X_train)
 print("done in %0.3fs" % (time() - t0))
+##the pca breaks down the image and analyzes it is  principle component analysis
 
 eigenfaces = pca.components_.reshape((n_components, h, w))
 
@@ -71,6 +81,9 @@ def plot_gallery(images, titles, h, w, n_row=3, n_col=4):
         plt.title(titles[i], size=12)
         plt.xticks(())
         plt.yticks(())
+
+#svm classify creates a matrix where each row corresponds to an observation and 
+#each column corresponds to a variable or feature
 
 
 # plot the result of the prediction on a portion of the test set
