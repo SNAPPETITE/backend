@@ -1,33 +1,38 @@
-# found and modified this face identifying algorithm and I think it should work
-# havent been able to figure out how to import training set to sklearn 
+ 
+print(__doc__)
 
-
-from time import time
-import logging
 import matplotlib.pyplot as plt
-
+import numpy as np
 from sklearn.cross_validation import train_test_split
-from dropbox import fetch_plates_labeled ####still need to work out how to import 
-##images and labels 
-
-from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.decomposition import RandomizedPCA
 from sklearn.svm import SVC
+
+
+import os, os.path
+
+from PIL import Image
+import glob
+image_list = []
+for filename in glob.glob('User/franksyrek/desktop/SnappetitePhotos/'): 
+    im=Image.open(filename)
+    image_list.append(im)
+
+foodNpset = []
+for i in xrange(0, image_list.length):
+    foodNpset.append(numpy.asarray(imgs[i]))
+print foodNpset
 ##svc uses a one vs. one scheme we can use linearsvc which uses 
 #one vs. rest scheme
 
-print(__doc__)
 
-# Display progress logs on stdout
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
 
-plates= fetch_plates_labeled(color=True, download_if_missing= True)
 
-n_samples, h, w= plates_labeled.images.shape
+n_samples= foodNpset.length
+h, w= image_list.images.shape
 
-X= plates_labeled.data
+X= foodNpset
 n_features = X.shape[1]
 
 y= plates_labeled.target
@@ -104,3 +109,4 @@ eigenface_titles = ["eigenface %d" % i for i in range(eigenfaces.shape[0])]
 plot_gallery(eigenfaces, eigenface_titles, h, w)
 
 plt.show()
+
