@@ -22,7 +22,7 @@ average = [0,0,0]
 numOfValues = 0
 for i in temp:
 	for j in i:#for each set of RGB values
-		if ((j[0] + j[1] + j[2]) != 0) or ((j[0] + j[1] + j[2]) != 765): 
+		if ((j[0] + j[1] + j[2]) > 50) or ((j[0] + j[1] + j[2]) < 700): 
 		#ignore transparent pixels and white pixels
 			average[0] += j[0]
 			average[1] += j[1]
