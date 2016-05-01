@@ -49,6 +49,8 @@ for i in xrange(0,3):
 print average
 print(str(clf.predict([average])))
 
+
+
 ####################################
 ########## 3D Graphing #############
 ####################################
@@ -99,7 +101,7 @@ while(showGraph):
 		z = float(i[1][2])
 		ax.scatter(x, y, z, c = colorMap[i[0]], label = i[0])#plot on 3d graph
 	
-	ax.scatter(average[0], average[1], average[2], c = 'r', marker = '*', label = 'Your Food')#plot the food that was given
+	ax.scatter(average[0], average[1], average[2], c = 'r', s = 100, marker = '*', label = 'Your Food')#plot the food that was given
 
 	ax.set_xlabel('Red')#set axis labels
 	ax.set_ylabel('Green')
