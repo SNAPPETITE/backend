@@ -14,15 +14,19 @@ import os, os.path
 
 from PIL import Image
 import glob
+
 image_list = []
-for filename in glob.glob('User/franksyrek/desktop/SnappetitePhotos/'): 
+for filename in glob.glob('photos/*.jpg'): 
     im=Image.open(filename)
-    image_list.append(im)
+    image_list.append(np.array(im))
 
 foodNpset = []
-for i in xrange(0, image_list.length):
-    foodNpset.append(numpy.asarray(imgs[i]))
+for i in xrange(0, len(image_list)):
+    foodNpset.append(image_list[i])
 print foodNpset
+
+# fix the array
+
 ##svc uses a one vs. one scheme we can use linearsvc which uses 
 #one vs. rest scheme
 
