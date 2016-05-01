@@ -1,6 +1,7 @@
 #Tests the pictures using sample group.
 #author: Henry Woo <hcwoo2>
 
+from PIL import Image
 import numpy as np
 import csv
 from sklearn.svm import SVC
