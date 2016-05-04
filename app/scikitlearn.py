@@ -22,5 +22,3 @@ logreg.fit(dataset, target)
 #prints the prediction using the logistic regression model.
 result = logreg.predict(test)
 print(result)
-
-#I totally put this in the wrong place didnt I...
