@@ -8,13 +8,11 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.decomposition import RandomizedPCA
 from sklearn.svm import SVC
-
-
-import os, os.path
-
 from PIL import Image
 import glob
+import os, os.path
 
+#put all the pictures in an array of arrays with RGB tuples representing pixels
 image_list = []
 for filename in glob.glob('photos/*.jpg'): 
     im=Image.open(filename)
@@ -23,9 +21,6 @@ for filename in glob.glob('photos/*.jpg'):
 foodNpset = []
 for i in xrange(0, len(image_list)):
     foodNpset.append(image_list[i])
-print foodNpset
-
-# fix the array
 
 ##svc uses a one vs. one scheme we can use linearsvc which uses 
 #one vs. rest scheme
